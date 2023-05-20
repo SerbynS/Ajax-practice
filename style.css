@@ -77,8 +77,84 @@ header{
     transform: scale(1.2);
 }
 
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
 
+.user-products{
+    position: relative;
+}
 
+.user-products h1{
+    position: absolute;
+    left: 2rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
+}
 
+#user-products-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: tomato;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 1rem;
+}
 
+#cart-products{
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    padding: 10px;
+    text-align: left;
+    top: 59px;
+    right: 0rem;
+    left: -16rem;
+    position: absolute;
+}
 
+#cart-button i{
+    font-size: 32px;
+}
+
+#cart-button{
+    border: none;
+    background: none;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid black;
+    transition: all .5s;
+}
+
+#cart{
+    position: relative;
+}
+
+#cart-button:hover{
+    background: rgb(170, 170, 255);
+    color: tomato;
+    cursor: pointer;
+}
+
+#cart-products::before{
+    content: '';
+    border: transparent solid 16px;
+    border-bottom: solid #000 16px;
+    position: relative;
+    top: -2.7rem;
+    left: 15.8rem;
+    z-index: -1;     
+}
+
+.hide{
+    display: none;
+}
+
+#cart-products img{
+    max-width: 25px;
+    max-height: 25px;
+}
