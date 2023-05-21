@@ -1,9 +1,13 @@
 let productsGrid = document.getElementById("products-grid");
 let productsArray = [];
-let url = "https://my-json-server.typicode.com/SerbynS/Ajax-practice";
+let url = "https://serbyn-29bb.restdb.io/rest/products";
 let xhr = new XMLHttpRequest();
 
-xhr.open("GET", url + "/products");
+xhr.open("GET", url);
+
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("x-apikey", "6468f27d0b60fc42f4e1984c");
+xhr.setRequestHeader("cache-control", "no-cache");
 
 xhr.responseType = 'json';
 
@@ -21,7 +25,7 @@ xhr.onload = function(){
             <p class="product-price">${p.price}</p>
             <p class="product-description">${p.description}</p>
             <a href="userProfile.html?id=${p.author_id}">Seller profile</a>
-            <button onclick="addProductToCart(${p.id})">Buy</button>
+            <button onclick="addProductToCart('${p._id}')">Buy</button>
             
         `;
         productsGrid.appendChild(pElem);
@@ -40,11 +44,16 @@ function openCart(){
 }
 
 let cart = [];
+if(localStorage.getItem('cart')){
+    cart = JSON.parse(localStorage.getItem('cart'));
+    drawCartProducts();
+}
 function addProductToCart(id){
     let product = productsArray.find(function(p){
-        return p.id == id;
+        return p._id == id;
     });
     cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
     drawCartProducts();
 }
 
@@ -74,6 +83,7 @@ function drawCartProducts(){
 function buyAll(){
     cart = [];
     cartProd.innerHTML = "Money was withdraw from your credit card";
+    localStorage.setItem("cart", '[]');
 }
 
 
