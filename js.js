@@ -70,7 +70,7 @@ function drawCartProducts(){
             <p> <img src="${p.photo_url}"> ${p.name} |${p.price} </p>
             <hr>
         `;
-        sum += p.price;
+        sum += Number(p.price);
 
     });
 
@@ -80,10 +80,14 @@ function drawCartProducts(){
     `;
 }
 
+let modal = document.getElementById("myModal");
+
 function buyAll(){
-    cart = [];
-    cartProd.innerHTML = "Money was withdraw from your credit card";
-    localStorage.setItem("cart", '[]');
+    modal.style.display = "block";
+
+    // cart = [];
+    // cartProd.innerHTML = "Money was withdraw from your credit card";
+    // localStorage.setItem("cart", '[]');
 }
 
 
